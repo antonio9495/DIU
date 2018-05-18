@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="es">
+  <head>
+      <meta charset="utf-8">
+      <title>Practica 3 DIU</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.common-material.min.css" />
+      <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.material.min.css" />
+      <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.min.css" />
+      <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.material.min.css" />
+
+      <script src="http://cdn.kendostatic.com/2015.1.429/js/jquery.min.js"></script>
+      <script src="http://cdn.kendostatic.com/2015.1.429/js/kendo.all.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+  <body>
+    <script>
+    $(function () {
+
+        var $container = $('#container').masonry({
+            itemSelector: '.item',
+            columnWidth: 200
+        });
+
+        // reveal initial images
+        $container.masonryImagesReveal($('#images').find('.item'));
+    });
+
+    $.fn.masonryImagesReveal = function ($items) {
+        var msnry = this.data('masonry');
+        var itemSelector = msnry.options.itemSelector;
+        // hide by default
+        $items.hide();
+        // append to container
+        this.append($items);
+        $items.imagesLoaded().progress(function (imgLoad, image) {
+            // get item
+            // image is imagesLoaded class, not <img>, <img> is image.img
+            var $item = $(image.img).parents(itemSelector);
+            // un-hide item
+            $item.show();
+            // masonry does its thing
+            msnry.appended($item);
+        });
+
+        return this;
+    };
+    </script>
+    <script>
+    $(function () {
+    /* BOOTSNIPP FULLSCREEN FIX */
+    if (window.location == window.parent.location) {
+        $('#back-to-bootsnipp').removeClass('hide');
+    }
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('#fullscreen').on('click', function(event) {
+        event.preventDefault();
+        window.parent.location = "http://bootsnipp.com/iframe/4l0k2";
+    });
+    $('a[href="#cant-do-all-the-work-for-you"]').on('click', function(event) {
+        event.preventDefault();
+        $('#cant-do-all-the-work-for-you').modal('show');
+    })
+
+    $('[data-command="toggle-search"]').on('click', function(event) {
+        event.preventDefault();
+        $(this).toggleClass('hide-search');
+
+        if ($(this).hasClass('hide-search')) {
+            $('.c-search').closest('.row').slideUp(100);
+        }else{
+            $('.c-search').closest('.row').slideDown(100);
+        }
+    })
+
+    $('#contact-list').searchable({
+        searchField: '#contact-list-search',
+        selector: 'li',
+        childSelector: '.col-xs-12',
+        show: function( elem ) {
+            elem.slideDown(100);
+        },
+        hide: function( elem ) {
+            elem.slideUp( 100 );
+        }
+    })
+});
+    </script>
+    <header>
+      <section class="row">
+        <section class="col-xs-3 col-md-1">
+          <img id="logo" src="imagenes/logo.png" >
+        </section>
+        <section class="col-xs-9 col-md-8">
+          <section id="tit">
+           <h1>AGENDA UGR</h1>
+          </section>
+        </section>
+        <section class="col-xs-12 col-md-3">
+          <section class="col-xs-12 col-md-3">
+            <h3>Bienvenido <label><?php echo $_GET['usuario']; ?></label></h3>
+          </section>
+        </section>
+      </section>
+    </header>
+    <section class="row">
+      <section class="col-xs-12 col-md-12">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="index2.php">AGENDA UGR</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Actividades <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="actividades.html">General</a></li>
+                  <li><a href="recomentadas.html">Recomendadas</a></li>
+                  <li><a href="campus.html">Campus</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Social <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="perfil.html">Perfil</a></li>
+                  <li><a href="mensajes.html">Mensajes</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Mi espacio <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="agenda.html">Mi Agenda</a></li>
+                  <li><a href="concursos.html">Mis Concursos</a></li>
+                  <li><a href="reservas.html">Mis Reservas</a></li>
+                </ul>
+              </li>
+              <li><a href="foro.html">Foro</a></li>
+              <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="registro.html"><span class="glyphicon glyphicon-user"></span> Registro</a></li>
+              <li><a href="index.html"><span class="glyphicon glyphicon-log-out"></span> Desconectar</a></li>
+            </ul>
+          </div>
+        </nav>
+      </section>
+    </section>
+    <section class="row">
+      <section class="col-xs-12 col-md-12">
+        <label id="Barra"> Perfil</label>
+      </section>
+    </section>
+    <section class="row">
+      <section class="col-xs-12 col-md-4">
+        <a href="http://bootsnipp.com/mouse0270/snippets/4l0k2" class="btn btn-danger hide" id="back-to-bootsnipp">Back to Bootsnipp</a>
+                    <div class="panel panel-default">
+                        <div class="panel-heading c-list">
+                            <span class="title">Contacts</span>
+                            <ul class="pull-right c-controls">
+                                <li><a href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="glyphicon glyphicon-plus"></i></a></li>
+                                <li><a href="#" class="hide-search" data-command="toggle-search" data-toggle="tooltip" data-placement="top" title="Toggle Search"><i class="fa fa-ellipsis-v"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="row" style="display: none;">
+                            <div class="col-xs-12">
+                                <div class="input-group c-search">
+                                    <input type="text" class="form-control" id="contact-list-search">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="list-group" id="contact-list">
+                            <li class="list-group-item">
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
+                                </div>
+                                <div class="col-xs-12 col-sm-9">
+                                    <span class="name">Scott Stevens</span><br/>
+                                    <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5842 Hillcrest Rd"></span>
+                                    <span class="visible-xs"> <span class="text-muted">5842 Hillcrest Rd</span><br/></span>
+                                    <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(870) 288-4149"></span>
+                                    <span class="visible-xs"> <span class="text-muted">(870) 288-4149</span><br/></span>
+                                    <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="scott.stevens@example.com"></span>
+                                    <span class="visible-xs"> <span class="text-muted">scott.stevens@example.com</span><br/></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/men/97.jpg" alt="Seth Frazier" class="img-responsive img-circle" />
+                                </div>
+                                <div class="col-xs-12 col-sm-9">
+                                    <span class="name">Seth Frazier</span><br/>
+                                    <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="7396 E North St"></span>
+                                    <span class="visible-xs"> <span class="text-muted">7396 E North St</span><br/></span>
+                                    <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(560) 180-4143"></span>
+                                    <span class="visible-xs"> <span class="text-muted">(560) 180-4143</span><br/></span>
+                                    <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="seth.frazier@example.com"></span>
+                                    <span class="visible-xs"> <span class="text-muted">seth.frazier@example.com</span><br/></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/women/90.jpg" alt="Jean Myers" class="img-responsive img-circle" />
+                                </div>
+                                <div class="col-xs-12 col-sm-9">
+                                    <span class="name">Jean Myers</span><br/>
+                                    <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="4949 W Dallas St"></span>
+                                    <span class="visible-xs"> <span class="text-muted">4949 W Dallas St</span><br/></span>
+                                    <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(477) 792-2822"></span>
+                                    <span class="visible-xs"> <span class="text-muted">(477) 792-2822</span><br/></span>
+                                    <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="jean.myers@example.com"></span>
+                                    <span class="visible-xs"> <span class="text-muted">jean.myers@example.com</span><br/></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/men/24.jpg" alt="Todd Shelton" class="img-responsive img-circle" />
+                                </div>
+                                <div class="col-xs-12 col-sm-9">
+                                    <span class="name">Todd Shelton</span><br/>
+                                    <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5133 Pecan Acres Ln"></span>
+                                    <span class="visible-xs"> <span class="text-muted">5133 Pecan Acres Ln</span><br/></span>
+                                    <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(522) 991-3367"></span>
+                                    <span class="visible-xs"> <span class="text-muted">(522) 991-3367</span><br/></span>
+                                    <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="todd.shelton@example.com"></span>
+                                    <span class="visible-xs"> <span class="text-muted">todd.shelton@example.com</span><br/></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/women/34.jpg" alt="Rosemary Porter" class="img-responsive img-circle" />
+                                </div>
+                                <div class="col-xs-12 col-sm-9">
+                                    <span class="name">Rosemary Porter</span><br/>
+                                    <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5267 Cackson St"></span>
+                                    <span class="visible-xs"> <span class="text-muted">5267 Cackson St</span><br/></span>
+                                    <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(497) 160-9776"></span>
+                                    <span class="visible-xs"> <span class="text-muted">(497) 160-9776</span><br/></span>
+                                    <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="rosemary.porter@example.com"></span>
+                                    <span class="visible-xs"> <span class="text-muted">rosemary.porter@example.com</span><br/></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/women/56.jpg" alt="Debbie Schmidt" class="img-responsive img-circle" />
+                                </div>
+                                <div class="col-xs-12 col-sm-9">
+                                    <span class="name">Debbie Schmidt</span><br/>
+                                    <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="3903 W Alexander Rd"></span>
+                                    <span class="visible-xs"> <span class="text-muted">3903 W Alexander Rd</span><br/></span>
+                                    <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(867) 322-1852"></span>
+                                    <span class="visible-xs"> <span class="text-muted">(867) 322-1852</span><br/></span>
+                                    <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="debbie.schmidt@example.com"></span>
+                                    <span class="visible-xs"> <span class="text-muted">debbie.schmidt@example.com</span><br/></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/women/76.jpg" alt="Glenda Patterson" class="img-responsive img-circle" />
+                                </div>
+                                <div class="col-xs-12 col-sm-9">
+                                    <span class="name">Glenda Patterson</span><br/>
+                                    <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5020 Poplar Dr"></span>
+                                    <span class="visible-xs"> <span class="text-muted">5020 Poplar Dr</span><br/></span>
+                                    <span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(538) 718-7548"></span>
+                                    <span class="visible-xs"> <span class="text-muted">(538) 718-7548</span><br/></span>
+                                    <span class="fa fa-comments text-muted c-info" data-toggle="tooltip" title="glenda.patterson@example.com"></span>
+                                    <span class="visible-xs"> <span class="text-muted">glenda.patterson@example.com</span><br/></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ul>
+                        <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+                    </div>
+      </section>
+      <section class="col-xs-12 col-md-8">
+        <section id="galeria">
+          <h1>Galería de imagenes</h1>
+
+          <div id="container"></div>
+          <div id="images">
+              <div class="item">
+                  <img src="http://lorempixel.com/425/299/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/190/292/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/520/329/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/404/176/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/530/290/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/228/200/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/207/316/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/435/162/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/376/175/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/508/338/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/404/389/nature">
+              </div>
+              <div class="item">
+                  <img src="http://lorempixel.com/216/304/nature">
+              </div>
+          <p>
+              <button id="load-images">cargar imagenes</button>
+              <script src="//masonry.desandro.com/masonry.pkgd.min.js"></script>
+              <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+              </div>
+          </p>
+        </section>
+      </section>
+    </section>
+    <footer>
+      <a href="index.html">Español</a> - <a href="indexE.html">English</a><br>
+        Informacion de contacto: <a href="mailto:agendaugr@ugr.es">agendaugr@ugr.es</a></p>
+    </footer>
+  </body>
+</html>
