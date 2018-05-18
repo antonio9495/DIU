@@ -35,15 +35,9 @@
           </section>
         </section>
         <section class="col-xs-12 col-md-3">
-          <form action="index.html" method="get" id="formulario1">
-            <fieldset>
-                <label> Usuario</label>
-                  <input type="text" id="campo2" name="usuario" required/>
-                <label> Contrase&ntildea</label>
-                  <input type="password" name="contrasenia" id="campo1" required/>
-                <button class="w3-button w3-tiny w3-black w3-border w3-border-black w3-round-large" name="enviar" type="submit"> Enviar </button>
-            </fieldset>
-          </form>
+          <section class="col-xs-12 col-md-3">
+            <h3>Bienvenido <label><?php echo $_GET['usuario']; ?></label></h3>
+          </section>
         </section>
       </section>
     </header>
@@ -138,7 +132,7 @@
       </section>
     </section>
     <footer>
-      Idioma: <a href="index.html">Español</a> - <a href="indexE.html">English</a><br>
+      <a href="index.html">Español</a> - <a href="indexE.html">English</a><br>
         Informacion de contacto: <a href="mailto:agendaugr@ugr.es">agendaugr@ugr.es</a></p>
     </footer>
   </body>
