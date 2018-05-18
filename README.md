@@ -14,5 +14,4 @@ Uso de patrones de diseño para componentes.
 Utilizar herramientas de desarrollo Web. Utilizaremos el entorno Bootstrap
 Publicar en GitHub haciendo un FORK de este proyecto.
 
-##Enlace a la página:
-https://antonio9495.github.io/DIU
+#Enlace a la página: https://antonio9495.github.io/DIU
